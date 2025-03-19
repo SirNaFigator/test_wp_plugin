@@ -17,7 +17,7 @@ define('CWP_PLUGIN_PATH', plugin_dir_path(__FILE__));
 define('CWP_PLUGIN_URL', plugin_dir_url(__FILE__));
 
 // API KEY OPENWEATHERMAP
-define('CWP_OPENWEATHERMAP_API_KEY', 'bd7ec153ee1f2df6c414c5b3dcb3de6e');
+define('CWP_OPENWEATHERMAP_API_KEY', 'XXXXXXXXXXXXXXXXXXXXXXXXXX');
 
 // Подключение функций плагина
 require_once CWP_PLUGIN_PATH.'includes/functions.php';
