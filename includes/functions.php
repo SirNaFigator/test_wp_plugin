@@ -59,6 +59,13 @@ function cwp_cities_list($search_string = false)
 {
 	global $wpdb;
 
+	if($search_string && !empty($search_string))
+	{
+		$query_like		= $wpdb->prepare(" AND p.post_title LIKE %s", '%'.$wpdb->esc_like($search_string).'%');
+	}else{
+		$query_like		= '';
+	}
+
 	$query 			= "SELECT
     						p.ID,
     						p.post_title AS city,
@@ -69,14 +76,10 @@ function cwp_cities_list($search_string = false)
     					WHERE
     						p.post_type = 'cities'
     						AND p.post_status = 'publish'
+    						".$query_like."
     					ORDER BY 
     						t.name ASC,
     						p.post_title ASC";
-
-	if($search_string && !empty($search_string))
-	{
-		$query		.= $wpdb->prepare(" AND p.post_title LIKE %s", '%'.$wpdb->esc_like($search_string).'%');
-	}
 
 	$items_list		= $wpdb->get_results($query);
 
